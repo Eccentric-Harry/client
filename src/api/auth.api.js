@@ -7,17 +7,16 @@ const API = axios.create({
   withCredentials: true,
 });
 
-
+// API Interceptor (Allow you to run your code or modify the request/response before the request is sent or after the response is received.)
 API.interceptors.response.use(
   (response) => response, 
   async (error) => {
     const originalRequest = error.config;
-
     if (
       error?.response?.data?.error === "jwt expired" &&
       !originalRequest._retry
     ) {
-      originalRequest._retry = true; 
+      originalRequest._retry = true;
       try {
         console.log("this refresh access token called");
         const { accessToken } = await refreshAccessToken(); 

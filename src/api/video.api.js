@@ -18,7 +18,7 @@ export const getVideos = async (
   console.log(userId);
   try {
     const url = new URL(`${BASE_URL}/video`);
-
+    console.log(url);
     if (userId) url.searchParams.set("userId", userId);
     if (sortBy) url.searchParams.set("sortBy", sortBy);
     if (sortType) url.searchParams.set("sortType", sortType);

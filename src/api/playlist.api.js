@@ -80,14 +80,3 @@ export const removeVideoFromPlaylist = async (videoId, playlistId) => {
     throw error?.response?.data?.error;
   }
 };
-
-export const checkVideoInPlaylist = async (videoId, playlistId) => {
-  try {
-    const { data } = await API.get(
-      `/playlist/check-video/${playlistId}/${videoId}`
-    );
-    return data?.data?.isPresent;
-  } catch (error) {
-    throw error?.response?.data?.error;
-  }
-};
