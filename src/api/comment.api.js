@@ -4,13 +4,14 @@ import { BASE_URL } from "../constants";
 
 const API = axios.create({
   baseURL: BASE_URL,
-  withCredentials: true,
+  withCredentials: true, // we use this to maintain CORS policy
 });
 
 export const getAllComments = async (
   videoId = null,
   authenticated = true,
-  page = null
+  page = null,
+  limit = null
 ) => {
   try {
     const url = new URL(
@@ -18,7 +19,7 @@ export const getAllComments = async (
     );
 
     if (page) url.searchParams.set("page", page);
-    // if (limit) url.searchParams.set("limit", limit);
+    if (limit) url.searchParams.set("limit", limit);
     const { data } = await API.get(url.href);
 
     return data?.data;
