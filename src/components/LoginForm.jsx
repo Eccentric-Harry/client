@@ -34,11 +34,11 @@ function LoginForm({ onLogin }) {
     }
   };
   return (
-    <form onSubmit={handleSubmit(loginUser)} className="flex flex-col">
-      <Input
+    <form onSubmit={handleSubmit(loginUser)} className="flex flex-col text-[#FFFFFF]">
+      <Input className="text-white"
         label={"Username/Email*"}
         type="text"
-        placeholder="johnwick7"
+        placeholder="Username"
         id={"username"}
         {...register("usernameOrEmail", {
           required: true,
@@ -52,7 +52,7 @@ function LoginForm({ onLogin }) {
       <Input
         label={"Password*"}
         type="password"
-        placeholder="*******"
+        placeholder="Password"
         id={"password"}
         {...register("password", {
           required: true,
