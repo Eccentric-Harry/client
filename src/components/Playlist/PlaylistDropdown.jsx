@@ -110,11 +110,11 @@ function PlaylistDropdown({ videoId }) {
                 id="playlist-name"
                 placeholder="Enter playlist name"
                 required
-                className="w-full rounded-lg border border-transparent bg-white px-3 py-2 text-black outline-none focus:border-[#ae7aff]"
+                className="w-full rounded-lg border border-transparent bg-white px-3 py-2 text-black outline-none focus:border-blue-600"
               />
               <button
                 type="submit"
-                className="mx-auto mt-4 rounded-lg bg-[#ae7aff] px-4 py-2 text-black"
+                className="mx-auto mt-4 rounded-lg bg-blue-400 px-4 py-2 text-black"
               >
                 Create new playlist
               </button>
@@ -122,7 +122,7 @@ function PlaylistDropdown({ videoId }) {
           </div>
         )}
       </div>
-      {showCreatePlaylist && <PlaylistForm onClose={handleCreatePlaylist} />}
+      {showCreatePlaylist && <PlaylistForm onClose={createPlaylist} />}
     </>
   );
 }

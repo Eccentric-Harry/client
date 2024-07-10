@@ -71,21 +71,23 @@ function Header() {
   }, [location.pathname]);
 
   return (
-    <header className="z-[9999] sticky inset-x-0 top-0 w-full  text-white bg-[#0e0e0e] px-4">
-      <nav className="mx-auto flex max-w-7xl items-center py-2 ">
+    <header className="z-[9999] sticky inset-x-0 top-0 w-full text-white bg-[#0e0e0e] px-4">
+      <nav className="mx-auto flex max-w-7xl items-center py-2">
         <Link to="/" className="flex items-center w-2/12">
           <Logo className="shrink-0 sm:w-[8rem]" mobile={true} />
         </Link>
-
-        <Search />
-
+  
+        <div className="flex-grow flex justify-center w-10/12">
+          <Search />
+        </div>
+  
         <button
           onClick={handleSideBar}
           className="cursor-pointer group peer ml-4 flex w-6 shrink-0 flex-wrap gap-y-1.5 sm:hidden"
         >
-          <span className="block h-[2px] w-full bg-white group-hover:bg-[#ae7aff]"></span>
-          <span className="block h-[2px] w-2/3 bg-white group-hover:bg-[#ae7aff]"></span>
-          <span className="block h-[2px] w-full bg-white group-hover:bg-[#ae7aff]"></span>
+          <span className="block h-[2px] w-full bg-white group-hover:bg-blue-400"></span>
+          <span className="block h-[2px] w-2/3 bg-white group-hover:bg-blue-400"></span>
+          <span className="block h-[2px] w-full bg-white group-hover:bg-blue-400"></span>
         </button>
         <div
           className={`fixed inset-y-0 right-0 flex w-full max-w-xs shrink-0 ${
@@ -106,7 +108,7 @@ function Header() {
                 <li key={index} className="w-full">
                   <Link
                     to={item.path}
-                    className="flex w-full items-center justify-start gap-x-4 border border-white px-4 py-1.5 text-left hover:bg-[#ae7aff] hover:text-black focus:border-[#ae7aff] focus:bg-[#ae7aff] focus:text-black"
+                    className="flex w-full items-center justify-start gap-x-4 border border-white px-4 py-1.5 text-left hover:bg-blue-400 hover:text-black focus:border-blue-500 focus:bg-blue-400 focus:text-black"
                   >
                     <span className="inline-block w-full max-w-[20px] group-hover:mr-4 lg:mr-4">
                       {item.icon}
@@ -118,12 +120,8 @@ function Header() {
             </ul>
           </IconContext.Provider>
           <div className="mb-8 mt-auto flex w-full flex-wrap gap-4 px-4 sm:mb-0 sm:mt-0 sm:items-center sm:px-0">
-            
-              <SpButton onClick={handleUploadVideo}>Upload Video</SpButton>
-            
-              {/* <Button onClick={handleUploadVideo}>Upload Video</Button> */}
-          
-
+            <Button className="bg-green-800" onClick={handleUploadVideo}>Upload Video</Button>
+  
             {authStatus && userData && (
               <>
                 <Button
@@ -152,11 +150,11 @@ function Header() {
                 </div>
               </>
             )}
-
+  
             {!authStatus && (
               <>
                 <Link to="/login">
-                  <SpButton className="bg-blue-800">Log in</SpButton>
+                  <button className="bg-blue-800 mr-1 rounded px-3 py-2 text-center text-white transition-all duration-150 ease-in-out active:translate-x-[5px] active:translate-y-[5px] active:shadow-[0px_0px_0px_0px_#4f4e4e] sm:w-auto ">Log in</button>
                 </Link>
               </>
             )}
@@ -165,6 +163,7 @@ function Header() {
       </nav>
     </header>
   );
+  
 }
 
 export default Header;

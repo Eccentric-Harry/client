@@ -116,7 +116,7 @@ function VideoForm({
                 type="file"
                 accept="image/*"
                 disabled={isPending}
-                className="w-full border p-1 file:mr-4 file:border-none file:bg-[#ae7aff] file:px-3 file:py-1.5"
+                className="w-full border p-1 file:mr-4 file:border-none file:bg-blue-400 file:px-3 file:py-1.5"
                 onChange={(e) => setThumbnail(e.target.files[0])}
               />
             </div>

@@ -51,14 +51,14 @@ function History() {
             placeholder="Search history"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full bg-gray-800 text-white border border-purple-500 rounded-md py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-purple-600"
+            className="w-full bg-gray-800 text-white border border-blue-500 rounded-md py-2 px-4 pl-10 focus:outline-none focus:ring-2 focus:ring-blue-600"
           />
-          <BiSearch className="absolute h-6 w-6 left-3 top-2.5 text-purple-400" />
+          <BiSearch className="absolute h-6 w-6 left-3 top-2.5 text-blue-400" />
         </div>
 
         <button
           onClick={clearWatchHistory}
-          className="w-full bg-purple-600 hover:bg-purple-700 text-white font-bold py-2 px-4 rounded transition duration-300"
+          className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded transition duration-300" 
         >
           Clear Watch History
         </button>

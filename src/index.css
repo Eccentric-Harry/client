@@ -1,3 +1,4 @@
+/* Existing Tailwind and custom CSS */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -40,7 +41,7 @@ body {
 }
 
 .plyr {
-  --plyr-color-main: hsl(280, 95%, 39%);
+  --plyr-color-main: hsl(223, 92%, 43%);
   --plyr-border-radius: 10px;
 
   --plyr-font-family: inherit;
@@ -104,7 +105,7 @@ body {
 
   /* Range */
   --plyr-range-track-height: 5px;
-  --plyr-range-fill-background: var(--plyr-color-main);
+  --plyr-range-fill-background: #fff; /* White progress bar */
 
   --plyr-range-thumb-height: 13px;
   --plyr-range-thumb-active-shadow-width: 3px;

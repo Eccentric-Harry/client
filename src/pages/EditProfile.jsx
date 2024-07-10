@@ -43,7 +43,7 @@ function EditProfile() {
             <div className="inline-flex min-w-[145px] justify-end">
               <Link
                 to={`/channel/${channelInfo?.username}`}
-                className="px-4 py-1.5 text-sm text-white bg-[#ae7aff] rounded-md"
+                className="px-4 py-1.5 text-sm text-white bg-blue-800 rounded-md"
               >
                 View Channel
               </Link>
@@ -53,7 +53,7 @@ function EditProfile() {
         <ul className="no-scrollbar sticky top-[66px] z-[2] flex flex-row gap-x-2 overflow-auto border-b-2 border-gray-400 bg-[#0e0e0e] py-2 sm:top-[82px]">
           {editProfileItems.map((item, index) => (
             <li key={index} className="w-full">
-              <NavLink
+              <NavLink  
                 to={`/edit-profile/${item.path}`}
                 className={
                   ({ isActive }) =>

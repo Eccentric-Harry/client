@@ -56,7 +56,7 @@ function AuthLayout({ auth, children, pageName }) {
         <GuestComponent />
         <div className="absolute left-1/2 bottom-[30%] transform -translate-x-1/2 ">
           <button
-            className="bg-purple-600 text-white px-6 py-3 rounded-full hover:bg-purple-700 transition duration-300 text-lg font-semibold"
+            className="bg-blue-600 text-white px-6 py-3 rounded-full hover:bg-blue-700 transition duration-300 text-lg font-semibold"
             onClick={() => setShowLoginPopup(true)}
           >
             Sign In
