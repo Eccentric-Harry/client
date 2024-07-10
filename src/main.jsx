@@ -46,7 +46,7 @@ import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Toaster } from "react-hot-toast";
 import { disableReactDevTools } from "@fvilers/disable-react-devtools";
 
-if (import.meta.env.MODE === "production") disableReactDevTools();
+if (import.meta.env.MODE === "development") disableReactDevTools();
 
 const queryClient = new QueryClient();
 
