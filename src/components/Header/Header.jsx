@@ -76,11 +76,11 @@ function Header() {
         <Link to="/" className="flex items-center w-2/12">
           <Logo className="shrink-0 sm:w-[8rem]" mobile={true} />
         </Link>
-  
+
         <div className="flex-grow flex justify-center w-10/12">
           <Search />
         </div>
-  
+
         <button
           onClick={handleSideBar}
           className="cursor-pointer group peer ml-4 flex w-6 shrink-0 flex-wrap gap-y-1.5 sm:hidden"
@@ -120,17 +120,19 @@ function Header() {
             </ul>
           </IconContext.Provider>
           <div className="mb-8 mt-auto flex w-full flex-wrap gap-4 px-4 sm:mb-0 sm:mt-0 sm:items-center sm:px-0">
-            <Button className="bg-green-800" onClick={handleUploadVideo}>Upload Video</Button>
-  
+            <Button className="w-full bg-green-800" onClick={handleUploadVideo}>
+              Upload Video
+            </Button>
+
             {authStatus && userData && (
               <>
                 <Button
-                  className="bg-red-700 hover:bg-red-500"
+                  className="w-full bg-red-700 hover:bg-red-500"
                   onClick={handleLogout}
                 >
                   Logout
                 </Button>
-                <div className="mb-8 mt-auto px-4 sm:mb-0 sm:mt-0 sm:px-0">
+                <div className="mb-8 mt-auto w-full px-4 sm:mb-0 sm:mt-0 sm:px-0">
                   <Link
                     to={`/channel/${userData?.username}/videos`}
                     className="flex w-full gap-4 text-left sm:items-center"
@@ -150,11 +152,13 @@ function Header() {
                 </div>
               </>
             )}
-  
+
             {!authStatus && (
               <>
-                <Link to="/login">
-                  <button className="bg-blue-800 mr-1 rounded px-3 py-2 text-center text-white transition-all duration-150 ease-in-out active:translate-x-[5px] active:translate-y-[5px] active:shadow-[0px_0px_0px_0px_#4f4e4e] sm:w-auto ">Log in</button>
+                <Link to="/login" className="w-full">
+                  <Button className="w-full bg-blue-800 hover:bg-blue-500">
+                    Log in
+                  </Button>
                 </Link>
               </>
             )}
@@ -163,7 +167,6 @@ function Header() {
       </nav>
     </header>
   );
-  
 }
 
 export default Header;
