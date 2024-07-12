@@ -42,7 +42,7 @@ function SubscribeButton({ isSubscribed, channelId }) {
       ) : (
         <SpButton
           onClick={() => handleSubscribe()}
-          className="flex justify-center items-center gap-4"
+          className="flex justify-center items-center bg-red-600  gap-4"
         >
           <HiOutlineUserAdd className="w-5 h-5" />
           Subscribe
