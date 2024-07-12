@@ -25,11 +25,6 @@ export const getVideos = async (
     if (page) url.searchParams.set("page", page);
     if (limit) url.searchParams.set("limit", limit);
 
-    if (sortBy && sortType) {
-      url.searchParams.set("sortBy", sortBy);
-      url.searchParams.set("sortType", sortType);
-    }
-
     const response = await API.get(url.href + "/");
     return response?.data?.data;
   } catch (error) {
@@ -47,7 +42,7 @@ export const getVideoById = async (videoId, isAuthenticated = true) => {
   } catch (error) {
     toast.error(
       error?.response?.data?.error ||
-        "An error occurred while fetching the video"
+      "An error occurred while fetching the video"
     );
     throw error?.response?.data?.error || "Failed to fetch video";
   }
@@ -111,6 +106,7 @@ export const editVideo = async (videoId, data) => {
 };
 
 export const getNextVideos = async (videoId) => {
+  console.log("Fetching next videos for videoId:", videoId);  // Add this line for debugging
   try {
     const { data } = await API.get(`/video/next/${videoId}`);
     return data?.data;
