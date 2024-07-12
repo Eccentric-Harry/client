@@ -7,6 +7,21 @@ const API = axios.create({
   withCredentials: true,
 });
 
+// Interceptor to add Authorization header
+API.interceptors.request.use(
+  async (config) => {
+    const token = localStorage.getItem('accessToken');
+    if (token) {
+      config.headers["Authorization"] = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
+
+// Interceptor to handle token refresh
 API.interceptors.response.use(
   (response) => response,
   async (error) => {
@@ -19,6 +34,7 @@ API.interceptors.response.use(
       try {
         console.log("this refresh access token called");
         const { accessToken } = await refreshAccessToken();
+        localStorage.setItem('accessToken', accessToken);
         API.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
         originalRequest.headers["Authorization"] = `Bearer ${accessToken}`;
         return API(originalRequest);
@@ -30,9 +46,12 @@ API.interceptors.response.use(
   }
 );
 
+// Login function
 export const login = async (formData) => {
   try {
     const { data } = await API.post("/users/login", formData);
+    localStorage.setItem('accessToken', data.data.accessToken);
+    API.defaults.headers.common["Authorization"] = `Bearer ${data.data.accessToken}`;
     toast.success(data?.message);
     return data?.data?.user;
   } catch (error) {
@@ -41,9 +60,12 @@ export const login = async (formData) => {
   }
 };
 
+// Logout function
 export const logout = async () => {
   try {
     const { data } = await API.post("/users/logout");
+    localStorage.removeItem('accessToken');
+    delete API.defaults.headers.common["Authorization"];
     toast.success(data?.message);
     return data;
   } catch (error) {
@@ -52,6 +74,7 @@ export const logout = async () => {
   }
 };
 
+// Get current user function
 export const getCurrentUser = async () => {
   try {
     const { data } = await API.get("/users/current-user");
@@ -61,9 +84,9 @@ export const getCurrentUser = async () => {
   }
 };
 
+// Register user function
 export const registerUser = async (data) => {
   const formData = new FormData();
-  // why are we creating an instanse of FormData() ? because, we are uploading files. plain JavaScript can't handle this.
   if (!data.get("avatar")) {
     toast.error("Avatar is required");
     return;
@@ -78,7 +101,6 @@ export const registerUser = async (data) => {
   formData.append("fullName", data.get("fullName"));
   try {
     const { data: responseData } = await API.post("/users/register", formData);
-    // ye bas renaming hai. you can just use { data }.
     toast.success(responseData?.message);
     return responseData?.data;
   } catch (error) {
@@ -87,6 +109,7 @@ export const registerUser = async (data) => {
   }
 };
 
+// Change password function
 export const changePassword = async (newPassData) => {
   try {
     const { data } = await API.post("/users/change-password", newPassData);
@@ -98,6 +121,7 @@ export const changePassword = async (newPassData) => {
   }
 };
 
+// Refresh access token function
 export const refreshAccessToken = async () => {
   try {
     const { data } = await API.post("/users/refresh-token");
