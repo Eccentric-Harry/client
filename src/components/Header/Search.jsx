@@ -1,3 +1,4 @@
+// search.jsx
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
@@ -8,6 +9,7 @@ function Search() {
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
+    console.log("Search query:", data?.query); // Add console log to check the query
     navigate(`/search/${data?.query}`);
   };
 
